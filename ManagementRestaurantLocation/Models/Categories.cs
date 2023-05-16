@@ -24,6 +24,6 @@ namespace ManagementRestaurantLocation.Models
 
         public string? Image { get; set; }
         public DateTime? Creat_At { get; set; }
-        public DateTime? Update_At { get; }
+        public DateTime? Update_At { get; set; }
     }
 }

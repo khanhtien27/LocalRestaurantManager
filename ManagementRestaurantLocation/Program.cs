@@ -12,7 +12,8 @@ builder.Services.AddDbContext<RestaurentDbContext>(option =>
 });
 
 builder.Services.AddAutoMapper(typeof(MapperCofi));
-builder.Services.AddScoped<IRestaurentRepository, RestaurantRepository>(); 
+builder.Services.AddScoped<IRestaurentRepository, RestaurantRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 

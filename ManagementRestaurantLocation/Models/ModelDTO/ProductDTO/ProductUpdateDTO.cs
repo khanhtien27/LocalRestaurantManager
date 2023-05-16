@@ -4,6 +4,7 @@ namespace ManagementRestaurantLocation.Models.ModelDTO.ProductDTO
 {
     public class ProductUpdateDTO
     {
+        public int Id { get; set; }
         [Required]
         public int RetaurentID { get; set; }
 

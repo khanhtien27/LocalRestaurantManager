@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Azure;
+using ManagementRestaurantLocation.Global;
 using ManagementRestaurantLocation.Models;
 using ManagementRestaurantLocation.Models.ModelDTO.RestaurantDTO;
 using ManagementRestaurantLocation.Models.RestaurantDTO;
@@ -78,6 +79,9 @@ namespace ManagementRestaurantLocation.Controllers
                 }
 
                 var model = _mapper.Map<Restaurents>(retaurantCreateDTO);
+                model.Creat_At = DateTime.Now;
+                model.Update_At = DateTime.Now;
+                model.Slug = Slug.convertToUnSign2(model.Name);
                 await _restaurentRepository.CreateAsycn(model);
                 _APIRespone.StatusCode = HttpStatusCode.OK;
                 _APIRespone.Result = _mapper.Map<Restaurents>(retaurantCreateDTO);
@@ -99,6 +103,9 @@ namespace ManagementRestaurantLocation.Controllers
             {
                 if (retaurantUpdateDTO == null || Id != retaurantUpdateDTO.Id) return BadRequest();
                 var model = _mapper.Map<Restaurents>(retaurantUpdateDTO);
+                model.Slug = Slug.convertToUnSign2(model.Name);
+                model.Update_At = DateTime.Now;
+
                 await _restaurentRepository.UpdateAsycn(model);
                 _APIRespone.Result = model;
                 _APIRespone.StatusCode = HttpStatusCode.OK;
