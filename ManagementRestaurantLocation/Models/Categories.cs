@@ -22,8 +22,7 @@ namespace ManagementRestaurantLocation.Models
         public decimal Price { get; set; }
         public decimal? PriceSale { get; set; }
 
-        [Required]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public DateTime? Creat_At { get; set; }
         public DateTime? Update_At { get; }
     }

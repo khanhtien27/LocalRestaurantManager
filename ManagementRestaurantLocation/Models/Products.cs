@@ -20,8 +20,7 @@ namespace ManagementRestaurantLocation.Models
 
         public int? Status { get; set; }
 
-        [Required]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public DateTime? Creat_At { get; set; }
         public DateTime? Update_At { get; }
 
