@@ -2,7 +2,7 @@
 
 namespace ManagementRestaurantLocation.Models.ModelDTO.OrderDTO
 {
-    public class OderUpdateDTO
+    public class OrderUpdateDTO
     {
         public string Name { get; set; }
         [Required]
