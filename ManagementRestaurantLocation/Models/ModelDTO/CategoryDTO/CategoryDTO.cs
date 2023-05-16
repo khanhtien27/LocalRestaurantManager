@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ManagementRestaurantLocation.Models
+namespace ManagementRestaurantLocation.Models.ModelDTO.CategoryDTO
 {
-    public class Categories
+    public class CategoryDTO
     {
-        [Key]
         public int Id { get; set; }
 
-        [ForeignKey("Product")]
+        [Required]
         public int ProductID { get; set; }
 
         public Products Product { get; set; }
@@ -23,7 +22,5 @@ namespace ManagementRestaurantLocation.Models
         public double? PriceSale { get; set; }
 
         public string? Image { get; set; }
-        public DateTime? Creat_At { get; set; }
-        public DateTime? Update_At { get; }
     }
 }

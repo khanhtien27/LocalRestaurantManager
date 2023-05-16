@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ManagementRestaurantLocation.Models
+namespace ManagementRestaurantLocation.Models.ModelDTO.OrderDTO
 {
-    public class Order
+    public class OrderDTO
     {
         public int Id { get; set; }
         [Required]
@@ -11,10 +11,6 @@ namespace ManagementRestaurantLocation.Models
         public string Phone { get; set; }
         public string? Email { get; set; }
         public string? Note { get; set; }
-
-        public DateTime? Create_At { get; set; }
-        public DateTime? Update_At { get; set; }
-
         public int RestaurantID { get; set; }
         public int ProductID { get; set; }
         public int CateID { get; set; }
