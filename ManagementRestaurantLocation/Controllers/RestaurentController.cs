@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Azure;
 using ManagementRestaurantLocation.Models;
 using ManagementRestaurantLocation.Models.ModelDTO.RestaurantDTO;
+using ManagementRestaurantLocation.Models.RestaurantDTO;
 using ManagementRestaurantLocation.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -39,6 +41,27 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
+        [HttpGet("Id", Name = "GetRestaurent")]
+        
+        public async Task<ActionResult<APIRespone>> GetRestaurent (int Id)
+        {
+            try
+            {
+                if (Id == 0) return BadRequest();
+                var model = await _restaurentRepository.GetAsycn(res => res.Id == Id);
+                if (model == null) return NotFound();
+                _APIRespone.Result = _mapper.Map<RetaurantDTO>(model);
+                _APIRespone.StatusCode = HttpStatusCode.OK;
+                return Ok(_APIRespone);
+            }
+            catch (Exception ex)
+            {
+                _APIRespone.IsSuccess = false;
+                _APIRespone.ErrorsMessge = new List<string> { ex.ToString() };
+            }
+            return _APIRespone;
+        }
+
         [HttpPost]
         
         public async Task<ActionResult<APIRespone>> RestaureenCreate ([FromBody] RetaurantCreateDTO retaurantCreateDTO)
@@ -57,6 +80,8 @@ namespace ManagementRestaurantLocation.Controllers
                 var model = _mapper.Map<Restaurents>(retaurantCreateDTO);
                 await _restaurentRepository.CreateAsycn(model);
                 _APIRespone.StatusCode = HttpStatusCode.OK;
+                _APIRespone.Result = _mapper.Map<Restaurents>(retaurantCreateDTO);
+
                 return Ok(_APIRespone);
             }
             catch (Exception ex)
@@ -66,5 +91,44 @@ namespace ManagementRestaurantLocation.Controllers
             }
             return _APIRespone;
         }
+
+        [HttpPut]
+        public async Task<ActionResult<APIRespone>> UpdateRestaurent([FromBody] RetaurantUpdateDTO retaurantUpdateDTO, int Id)
+        {
+            try
+            {
+                if (retaurantUpdateDTO == null || Id != retaurantUpdateDTO.Id) return BadRequest();
+                var model = _mapper.Map<Restaurents>(retaurantUpdateDTO);
+                await _restaurentRepository.UpdateAsycn(model);
+                _APIRespone.Result = model;
+                _APIRespone.StatusCode = HttpStatusCode.OK;
+                return Ok(_APIRespone);
+            }
+
+            catch (Exception ex)
+            {
+                _APIRespone.IsSuccess = false;
+                _APIRespone.ErrorsMessge = new List<string> { ex.ToString() };
+            }
+            return _APIRespone;
+        }
+
+        [HttpDelete("Id", Name = "DeleteRestaurant")]
+        public async Task<ActionResult<APIRespone>> DeleteRestaurant(int Id)
+        {
+            if(Id == 0) return BadRequest();
+            var model = await _restaurentRepository.GetAsycn(res => res.Id == Id);
+            if (model == null) return NotFound();
+
+            await _restaurentRepository.DeleteAsycn(model);
+            _APIRespone.StatusCode = HttpStatusCode.NoContent;
+            _APIRespone.IsSuccess = true;
+            _APIRespone.ErrorsMessge = new List<string>
+            {
+                "Delete Succesful"
+            };
+            return Ok(_APIRespone);
+        }
+
     }
 }
