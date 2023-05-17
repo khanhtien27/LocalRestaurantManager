@@ -1,12 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManagementRestaurantLocation.Models.ModelDTO.CategoryDTO
 {
-    public class CategoryUpdateDTO
+    public class CategoryDTO
     {
         public int Id { get; set; }
+
         [Required]
         public int ProductID { get; set; }
+
+        public Products Product { get; set; }
 
         [Required]
         public string Name { get; set; }

@@ -1,6 +1,13 @@
-﻿namespace ManagementRestaurantLocation.Repository
+﻿using ManagementRestaurantLocation.Data;
+using ManagementRestaurantLocation.Models;
+using ManagementRestaurantLocation.Repository.IRepository;
+
+namespace ManagementRestaurantLocation.Repository
 {
-    public class CategoryRepository
+    public class CategoryRepository : Repository<Categories>, ICategoryRepository
     {
+        public CategoryRepository(RestaurentDbContext context) : base(context)
+        {
+        }
     }
 }

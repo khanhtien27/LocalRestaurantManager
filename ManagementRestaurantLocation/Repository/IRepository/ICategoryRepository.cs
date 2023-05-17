@@ -1,6 +1,8 @@
-﻿namespace ManagementRestaurantLocation.Repository.IRepository
+﻿using ManagementRestaurantLocation.Models;
+
+namespace ManagementRestaurantLocation.Repository.IRepository
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepository<Categories>
     {
     }
 }

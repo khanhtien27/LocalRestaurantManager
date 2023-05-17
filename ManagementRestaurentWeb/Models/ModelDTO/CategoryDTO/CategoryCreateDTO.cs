@@ -2,9 +2,9 @@
 
 namespace ManagementRestaurantLocation.Models.ModelDTO.CategoryDTO
 {
-    public class CategoryUpdateDTO
+    public class CategoryCreateDTO
     {
-        public int Id { get; set; }
+
         [Required]
         public int ProductID { get; set; }
 
