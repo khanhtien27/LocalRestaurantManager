@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static Restaurent_Utinity.SD;
+using static Unitity.SD;
 
 namespace ManagementRestaurentWeb.Models
 {

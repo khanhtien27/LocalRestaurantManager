@@ -1,6 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAutoMapper(typeof(MapperCofi));
+builder.Services.AddHttpClient<IRestaurentService, RestaurentService>();
+builder.Services.AddScoped<IRestaurentService, RestaurentService>();
+
+builder.Services.AddHttpClient<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
