@@ -1,4 +1,0 @@
-﻿namespace Restaurent_Utinity
-{
-    
-}
