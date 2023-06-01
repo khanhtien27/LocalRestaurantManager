@@ -107,7 +107,7 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
-        [HttpPut]
+        [HttpPut("Id", Name = "UpdateCategory")]
         public async Task<ActionResult<APIRespone>> UpdateCategory([FromBody] CategoryUpdateDTO categoryUpdateDTO, int Id)
         {
             try

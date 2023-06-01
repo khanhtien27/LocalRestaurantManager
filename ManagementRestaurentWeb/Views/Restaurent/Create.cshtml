@@ -1,0 +1,71 @@
+﻿@model ManagementRestaurentWeb.Models.ModelDTO.RestaurantDTO.RetaurantCreateDTO
+@{
+    ViewData["Title"] = "Create Restaurent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-5"></div>
+<form asp-action="Create">
+    <div class="container border p-3">
+        <h1 class="text-primary"><i class="bi bi-plus-square-fill"></i> Add Restaurent</h1>
+
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="Name" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="Rate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="Rate" class="form-control">
+                    <option disabled selected>Select rate 1-5 star</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+            </div>
+
+
+            <div class="col-2 pt-3">
+                <label asp-for="Address" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="Image" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input type="file" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            
+
+            <div class="col-2 offset-8 pt-3">
+                <a asp-action="IndexRestaurent" asp-controller="Restaurent" class="btn-primary btn form-control"><i class="bi bi-arrow-return-left"></i> Back to list</a>
+            </div>
+            <div class="col-2 pt-3">
+                <input type="submit" value="Create" class="btn-success btn form-control" />
+            </div>
+        </div>
+    </div>
+</form>

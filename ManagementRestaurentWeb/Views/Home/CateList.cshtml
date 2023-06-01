@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ManagementRestaurentWeb.Models.ModelDTO.CategoryDTO.CategoryDTO>
+
+@{
+    ViewData["Title"] = "Category Page";
+}
+<img class="d-block pb-3 w-100" src="~/Img/@Model.Select(i => i.Product.Image).FirstOrDefault()" alt="photo" />
+
+<div class="card-group" style="--bs-gutter-x:0">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card m-3 align-content-center" style="border-radius:20px; border:1px solid #111111">
+                <img class="card-img-top rounded" width="200" height="200" src="~/Img/@item.Image" alt="Photo category">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title card-header col-10 text-center bg-info"><b>@item.Name</b></h5>
+                        <p class="col-2 card-header">
+                            @if (item.Status == 1)
+                            {
+                                <i class="bi bi-layout-sidebar-inset-reverse text-success" style="font-size:x-large"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-layout-sidebar-inset text-danger" style="font-size:x-large"></i>
+                            }
+                        </p>
+                    </div>
+                    <p class="p-3 text-truncate col-8" style="max-width: 150px;">"@item.Description"</p>
+                    <button data-bs-toggle="collapse" data-bs-target="#demo" class="float-end row">See More</button>
+                    <div id="demo" class="collapse ">
+                        @item.Description
+                    </div>
+
+
+                    <div class="row col-12 p-3">
+                        <span class="text-warning font-weight-bold pt-1" style="font-size:18px">
+                            USD
+                            <span style="border-bottom:1px solid #ff6a00">
+                                @item.Price.ToString("c")
+                            </span>
+                        </span>
+                        <span class="text-warning font-weight-bold pt-1 col-12" style="font-size:20px">
+                            Sale
+                            <span style="border-bottom:1px solid #a62a21 ">
+                                @item.PriceSale
+                            </span>
+                        </span>
+                    </div>
+                    @if (item.Status == 1)
+                    {
+                        <a asp-action="CateList" asp-controller="Home" asp-route-Id="@item.Id" class="card-footer btn btn-info col-12">Order</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

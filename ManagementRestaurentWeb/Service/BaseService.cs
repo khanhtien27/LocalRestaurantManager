@@ -1,10 +1,10 @@
-﻿using ManagementRestaurantLocation.Models;
+﻿
 using ManagementRestaurentWeb.Models;
 using ManagementRestaurentWeb.Service.IService;
 using Newtonsoft.Json;
-using Restaurent_Utinity;
 using System;
 using System.Text;
+using Unitity;
 
 namespace ManagementRestaurentWeb.Service
 {
@@ -12,6 +12,7 @@ namespace ManagementRestaurentWeb.Service
     {
         public APIRespone aPIRespone { get; set; }
         public IHttpClientFactory HttpClientFactory { get; set; }
+
         public BaseService(IHttpClientFactory httpClientFactory)
         {
             this.aPIRespone = new();
@@ -49,6 +50,12 @@ namespace ManagementRestaurentWeb.Service
                 }
 
                 HttpResponseMessage responseMessage = null;
+
+                if(!string.IsNullOrEmpty(aPIRequest.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", aPIRequest.Token);
+                }
+
                 responseMessage = await client.SendAsync(requestMessage);
                 var aPIContent = await responseMessage.Content.ReadAsStringAsync();
 
@@ -64,7 +71,7 @@ namespace ManagementRestaurentWeb.Service
                         return returnResp;
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     var exRespone = JsonConvert.DeserializeObject<T>(aPIContent);
                     return exRespone;

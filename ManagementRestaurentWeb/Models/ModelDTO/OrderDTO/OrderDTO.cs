@@ -1,20 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ManagementRestaurantLocation.Models.ModelDTO.OrderDTO
+namespace ManagementRestaurentWeb.Models.ModelDTO.OrderDTO
 {
     public class OrderDTO
     {
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Phone { get; set; }
-        public string? Email { get; set; }
-        public string? Note { get; set; }
+        public int UserId { get; set; }
         public int RestaurantID { get; set; }
         public int ProductID { get; set; }
         public int CateID { get; set; }
-        public int Among { get; set; }
-        public double? Total { get; set; }
+        public int Among { get; set; } = 0;
+        public double? Total { get; set; } = 0;
     }
 }

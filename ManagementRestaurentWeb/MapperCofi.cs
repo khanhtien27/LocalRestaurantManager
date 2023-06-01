@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using ManagementRestaurantLocation.Models;
-using ManagementRestaurantLocation.Models.ModelDTO.CategoryDTO;
-using ManagementRestaurantLocation.Models.ModelDTO.OrderDTO;
-using ManagementRestaurantLocation.Models.ModelDTO.ProductDTO;
-using ManagementRestaurantLocation.Models.ModelDTO.RestaurantDTO;
-using ManagementRestaurantLocation.Models.RestaurantDTO;
+using ManagementRestaurentWeb.Models;
+using ManagementRestaurentWeb.Models.ModelDTO.CategoryDTO;
+using ManagementRestaurentWeb.Models.ModelDTO.OrderDTO;
+using ManagementRestaurentWeb.Models.ModelDTO.ProductDTO;
+using ManagementRestaurentWeb.Models.ModelDTO.RestaurantDTO;
 
-namespace ManagementRestaurantLocation
+namespace ManagementRestaurentWeb
 {
     public class MapperCofi : Profile
     {

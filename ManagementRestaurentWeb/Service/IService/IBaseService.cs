@@ -1,4 +1,5 @@
-﻿using ManagementRestaurantLocation.Models;
+﻿
+using ManagementRestaurentWeb.Models;
 
 namespace ManagementRestaurentWeb.Service.IService
 {

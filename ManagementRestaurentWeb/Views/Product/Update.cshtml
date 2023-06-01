@@ -1,0 +1,74 @@
+﻿@model ManagementRestaurentWeb.Models.ModelDTO.ProductDTO.ProductListRestaurent.ProductUpdateListRestaurent
+@{
+    ViewData["Title"] = "Update Restaurent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-5"></div>
+<form asp-action="Update">
+    <div class="container border p-3">
+        <h1 class="text-primary"><i class="bi bi-box-arrow-in-up"></i> Update Prodcut</h1>
+
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="productUpdateDTO.RetaurentID" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="productUpdateDTO.RetaurentID" class="form-select" asp-items="@Model.restaurentList">
+                    <option disabled selected>Select Restaurent</option>
+                </select>
+                <span asp-validation-for="productUpdateDTO.RetaurentID" class="text-danger"></span>
+
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="productUpdateDTO.Name" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="productUpdateDTO.Name" class="form-control" />
+                <span asp-validation-for="productUpdateDTO.Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="productUpdateDTO.Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <textarea asp-for="productUpdateDTO.Description" class="form-control"></textarea>
+                <span asp-validation-for="productUpdateDTO.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="productUpdateDTO.Status" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="productUpdateDTO.Status" class="form-control">
+                    <option value="2">Chua xuat ban</option>
+                    <option value="1">Xuat ban</option>
+                </select>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="productUpdateDTO.Image" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-2 pt-3" >
+                <input asp-for="productUpdateDTO.Image" disabled class="form-control" />
+            </div>
+            <div class="col-8 pt-3">
+                
+                <input asp-for="productUpdateDTO.Image" type="file" class="form-control" />
+                <span asp-validation-for="productUpdateDTO.Image" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2 offset-8 pt-3">
+                <a asp-action="IndexID" asp-controller="Product" asp-route-Id="@Model.productUpdateDTO.RetaurentID" class="btn-outline-primary btn form-control"><i class="bi bi-arrow-return-left"></i> Back to list</a>
+            </div>
+            <div class="col-2 pt-3">
+                <input type="submit" value="Update" class="btn-outline-success btn form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+

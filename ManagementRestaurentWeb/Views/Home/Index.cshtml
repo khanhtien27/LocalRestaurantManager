@@ -1,5 +1,48 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Components;
+@model IEnumerable<ManagementRestaurentWeb.Models.ModelDTO.RestaurantDTO.RetaurantDTO>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<img
+<img class="d-block w-100" src="~/Img/NT/NT3.jpg" alt="photo" />
+
+<div class="row" style="--bs-gutter-x:0">
+    @if(Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="p-4 col-md-12 col-lg-6">
+                <div class="row" style="border-radius:20px; border:1px solid #111111">
+                    <div class="col-4 pt-3">
+                        <img class="d-block w-100" style="border-radius:20px;" src="~/Img/@item.Image" alt="phot">
+                    </div>
+                    <div class="col-8 pt-1">
+                        <p class="card-title text-warning" style="font-size:xx-large"><b>@item.Name</b></p>
+                        <p class="card-text text-warning" >
+                            @((MarkupString)item.Description)
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <div class="row pb-2">
+                            <div class="col-4 pt-2">
+                                <a asp-action="Detail" asp-controller="Home" asp-route-Id="@item.Id" class="btn btn-outline-warning form-control btn-block">Detail</a>
+                            </div>
+                            <div class="col-8">
+                                <span class="text-warning">
+                                    @for (int i = 0; i < item.Rate; i++)
+                                    {
+                                        <i class="bi bi-star"></i>
+                                    }
+                                </span><br>
+                                <span class="pt-1 text-warning"><b>Address:  </b> @item.Address </span><br>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

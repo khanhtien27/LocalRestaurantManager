@@ -5,7 +5,9 @@ using ManagementRestaurantLocation.Models.ModelDTO.ProductDTO;
 using ManagementRestaurantLocation.Models.ModelDTO.RestaurantDTO;
 using ManagementRestaurantLocation.Models.RestaurantDTO;
 using ManagementRestaurantLocation.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Net;
 
 namespace ManagementRestaurantLocation.Controllers
@@ -46,7 +48,7 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult<APIRespone>> ProductCreate([FromBody] ProductCreatDTO  productDTO)
         {
@@ -57,11 +59,11 @@ namespace ManagementRestaurantLocation.Controllers
                     ModelState.AddModelError("ErrorsMessge", "Restaurent is not exits ");
                     return BadRequest(ModelState);
                 }
-                if (await _productRepository.GetAsycn(res => res.Name.ToLower() == productDTO.Name.ToLower()) != null)
-                {
-                    ModelState.AddModelError("ErrorsMessge", "Product is already exits ");
-                    return BadRequest(ModelState);
-                }
+                //if (await _productRepository.GetAsycn(res => res.Name.ToLower() == productDTO.Name.ToLower()) != null)
+                //{
+                //    ModelState.AddModelError("ErrorsMessge", "Product is already exits ");
+                //    return BadRequest(ModelState);
+                //}
                 if (productDTO == null)
                 {
                     return BadRequest(productDTO);
@@ -85,7 +87,7 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpGet("Id", Name = "GetProduct")]
         public async Task<ActionResult<APIRespone>> GetProduct(int Id)
         {
@@ -108,7 +110,8 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
-        [HttpPut]
+        [Authorize(Roles = "admin")]
+        [HttpPut("Id", Name = "UpdateProduct")]
         public async Task<ActionResult<APIRespone>> UpdateProduct([FromBody] ProductUpdateDTO productUpdateDTO, int Id)
         {
             try
@@ -133,6 +136,7 @@ namespace ManagementRestaurantLocation.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("Id", Name = "DeleteProduct")]
         public async Task<ActionResult<APIRespone>> DeleteProduct(int Id)
         {

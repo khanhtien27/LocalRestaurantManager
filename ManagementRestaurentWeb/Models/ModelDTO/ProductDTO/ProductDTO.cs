@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ManagementRestaurantLocation.Models.ModelDTO.ProductDTO
+namespace ManagementRestaurentWeb.Models.ModelDTO.ProductDTO
 {
     public class ProductDTO
     {

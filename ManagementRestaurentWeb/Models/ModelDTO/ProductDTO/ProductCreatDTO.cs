@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ManagementRestaurantLocation.Models.ModelDTO.ProductDTO
+namespace ManagementRestaurentWeb.Models.ModelDTO.ProductDTO
 {
     public class ProductCreatDTO
     {

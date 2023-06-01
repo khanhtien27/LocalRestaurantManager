@@ -1,0 +1,87 @@
+﻿@model ManagementRestaurentWeb.Models.ModelDTO.CategoryDTO.CateListProduct.CateListProductUpdate
+@{
+    ViewData["Title"] = "Create Restaurent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-5"></div>
+<form asp-action="Update">
+    <div class="container border p-3">
+        <h1 class="text-primary"><i class="bi bi-box-arrow-in-up"></i> Update Category</h1>
+
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="categoryUpdateDTO.Id" />
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.ProductID" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="categoryUpdateDTO.ProductID" class="form-select" asp-items="@Model.productList">
+                    <option disabled selected>Select Product</option>
+                </select>
+                <span asp-validation-for="categoryUpdateDTO.ProductID" class="text-danger"></span>
+
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.Name" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryUpdateDTO.Name" class="form-control" />
+                <span asp-validation-for="categoryUpdateDTO.Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <textarea asp-for="categoryUpdateDTO.Description" class="form-control"></textarea>
+                <span asp-validation-for="categoryUpdateDTO.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.Status" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="categoryUpdateDTO.Status" class="form-control">
+                    <option value="2">Chua xuat ban</option>
+                    <option value="1">Xuat ban</option>
+                </select>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.Price" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryUpdateDTO.Price" class="form-control" />
+                <span asp-validation-for="categoryUpdateDTO.Price" class="text-danger"></span>
+            </div>
+            
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.PriceSale" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryUpdateDTO.PriceSale" class="form-control" />
+                <span asp-validation-for="categoryUpdateDTO.PriceSale" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryUpdateDTO.Image" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input type="file" asp-for="categoryUpdateDTO.Image"  class="form-control" />
+                <span asp-validation-for="categoryUpdateDTO.Image" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2 offset-8 pt-3">
+                <a asp-action="Index" asp-controller="Product" asp-route-Id="@Model.categoryUpdateDTO.ProductID" class="btn-outline-primary btn form-control"><i class="bi bi-arrow-return-left"></i> Back to list</a>
+            </div>
+            <div class="col-2 pt-3">
+                <input type="submit" value="Update" class="btn-outline-success btn form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+

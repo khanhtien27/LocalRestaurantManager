@@ -5,6 +5,7 @@ using ManagementRestaurantLocation.Models;
 using ManagementRestaurantLocation.Models.ModelDTO.RestaurantDTO;
 using ManagementRestaurantLocation.Models.RestaurantDTO;
 using ManagementRestaurantLocation.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -42,6 +43,7 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("Id", Name = "GetRestaurent")]
         
         public async Task<ActionResult<APIRespone>> GetRestaurent (int Id)
@@ -64,7 +66,7 @@ namespace ManagementRestaurantLocation.Controllers
         }
 
         [HttpPost]
-        
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<APIRespone>> RestaureenCreate ([FromBody] RetaurantCreateDTO retaurantCreateDTO)
         {
             try
@@ -96,7 +98,8 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
-        [HttpPut]
+        [Authorize(Roles = "admin")]
+        [HttpPut("Id", Name = "UpdateRestaurent")]
         public async Task<ActionResult<APIRespone>> UpdateRestaurent([FromBody] RetaurantUpdateDTO retaurantUpdateDTO, int Id)
         {
             try
@@ -120,6 +123,7 @@ namespace ManagementRestaurantLocation.Controllers
             return _APIRespone;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("Id", Name = "DeleteRestaurant")]
         public async Task<ActionResult<APIRespone>> DeleteRestaurant(int Id)
         {

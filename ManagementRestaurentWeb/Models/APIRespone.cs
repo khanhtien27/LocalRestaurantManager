@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace ManagementRestaurantLocation.Models
+namespace ManagementRestaurentWeb.Models
 {
     public class APIRespone
     {

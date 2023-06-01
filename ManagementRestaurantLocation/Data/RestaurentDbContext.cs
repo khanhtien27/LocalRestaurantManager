@@ -13,5 +13,6 @@ namespace ManagementRestaurantLocation.Data
         public DbSet<Products> Products { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<LocalUser> localUsers { get; set; }
     }
 }

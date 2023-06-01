@@ -1,0 +1,86 @@
+﻿@model ManagementRestaurentWeb.Models.ModelDTO.CategoryDTO.CateListProduct.CateListProductCreate
+@{
+    ViewData["Title"] = "Create Restaurent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-5"></div>
+<form asp-action="Create">
+    <div class="container border p-3">
+        <h1 class="text-primary"><i class="bi bi-plus-square-fill"></i> Create Category</h1>
+
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.ProductID" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="categoryCreateDTO.ProductID" class="form-select" asp-items="@Model.productList">
+                    <option disabled selected>Select Restaurent</option>
+                </select>
+                <span asp-validation-for="categoryCreateDTO.ProductID" class="text-danger"></span>
+
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.Name" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryCreateDTO.Name" class="form-control" />
+                <span asp-validation-for="categoryCreateDTO.Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.Description" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <textarea asp-for="categoryCreateDTO.Description" class="form-control"></textarea>
+                <span asp-validation-for="categoryCreateDTO.Description" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.Price" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryCreateDTO.Price" class="form-control"/>
+                <span asp-validation-for="categoryCreateDTO.Price" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.PriceSale" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input asp-for="categoryCreateDTO.PriceSale" class="form-control"/>
+                <span asp-validation-for="categoryCreateDTO.PriceSale" class="text-danger"></span>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.Status" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <select asp-for="categoryCreateDTO.Status" class="form-control">
+                    <option value="2">Chua xuat ban</option>
+                    <option value="1">Xuat ban</option>
+                </select>
+            </div>
+
+            <div class="col-2 pt-3">
+                <label asp-for="categoryCreateDTO.Image" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pt-3">
+                <input type="file" asp-for="categoryCreateDTO.Image" class="form-control" />
+                <span asp-validation-for="categoryCreateDTO.Image" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2 offset-8 pt-3">
+                <a asp-action="IndexID" asp-controller="Product" asp-route-Id="@Model.categoryCreateDTO.ProductID" class="btn-outline-primary btn form-control"><i class="bi bi-arrow-return-left"></i> Back to list</a>
+            </div>
+            <div class="col-2 pt-3">
+                <input type="submit" value="Create" class="btn-outline-success btn form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
